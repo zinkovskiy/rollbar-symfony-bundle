@@ -1,0 +1,29 @@
+{
+  "name": "ant/rollbar-symfony-bundle",
+  "description": "Symfony bundle to integrate Rollbar tracker",
+  "type": "symfony-bundle",
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Ant\\RollbarSymfonyBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "files": [
+      "tests/Fixtures/App/AppKernel.php"
+    ],
+    "psr-4": {
+      "Ant\\RollbarSymfonyBundle\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-json": "*",
+    "symfony/http-kernel": "^6.4|^7.0",
+    "rollbar/rollbar": "^4.0",
+    "symfony/config": "^6.4|^7.0",
+    "symfony/dependency-injection": "^6.4|^7.0",
+    "symfony/serializer": "^6.4|^7.0",
+    "symfony/yaml": "^6.4|^7.0"
+  }
+}
