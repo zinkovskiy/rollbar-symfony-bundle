@@ -25,5 +25,17 @@
     "symfony/dependency-injection": "^6.4|^7.0",
     "symfony/serializer": "^6.4|^7.0",
     "symfony/yaml": "^6.4|^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5",
+    "friendsofphp/php-cs-fixer": "^3.64",
+    "phpstan/phpstan-symfony": "^1.4"
+  },
+  "scripts": {
+    "code-quality": [
+      "vendor/bin/php-cs-fixer check",
+      "vendor/bin/phpstan",
+      "vendor/bin/phpunit"
+    ]
   }
 }

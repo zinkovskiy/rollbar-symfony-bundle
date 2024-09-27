@@ -6,6 +6,4 @@ namespace Ant\RollbarSymfonyBundle;
 
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-final class RollbarSymfonyBundle extends AbstractBundle
-{
-}
+final class RollbarSymfonyBundle extends AbstractBundle {}
