@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ant\RollbarSymfonyBundle;
 
+use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
 use Rollbar\Config;
 use Rollbar\Defaults;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -51,6 +52,25 @@ final class RollbarSymfonyBundle extends AbstractBundle
         }
     }
 
+    public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
+    {
+        $builder->prependExtensionConfig('monolog', [
+            'handlers' => [
+                'rollbar' => [
+                    'type' => 'service',
+                    'id' => 'Ant\RollbarSymfonyBundle\Service\Monolog\Handler\RollbarHandler',
+                ],
+            ],
+        ]);
+
+        if ($builder->hasExtension('security')) {
+            $container->services()
+                ->set(PersonProvider::class)
+                ->autoconfigure()
+                ->autowire()
+                ->tag('rollbar.person_provider', ['priority' => -1]);
+        }
+    }
     /** @param array<string, mixed> $config */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {

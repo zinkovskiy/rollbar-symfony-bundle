@@ -14,3 +14,5 @@ services:
     factory: ['@Ant\RollbarSymfonyBundle\Service\RollbarHandlerFactory', createRollbarHandler]
     tags:
       - { name: monolog.logger, channel: rollbar }
+
+  Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~

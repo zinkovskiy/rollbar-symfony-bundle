@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ant\RollbarSymfonyBundle\Service;
 
+use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade;
 use Monolog\Handler\RollbarHandler;
 use Psr\Log\LogLevel;
 use Symfony\Component\HttpKernel\Kernel;
@@ -15,9 +16,11 @@ final class RollbarHandlerFactory
         string $environment,
         array $config,
         private readonly RollbarWrapper $rollbar,
+        PersonProviderFacade $personProviderFacade,
     ) {
         $config['environment'] = $environment;
         $config['framework'] = 'Symfony '.Kernel::VERSION;
+        $config['person_fn'] = $personProviderFacade;
 
         $rollbar->init($config);
     }
