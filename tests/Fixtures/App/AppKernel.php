@@ -21,18 +21,23 @@ class AppKernel extends Kernel
         ];
     }
 
+    public function getProjectDir(): string
+    {
+        return __DIR__;
+    }
+
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
-        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load($this->getProjectDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
 
     public function getCacheDir(): string
     {
-        return realpath(__DIR__.'/../../../').'/var/'.$this->getEnvironment().'/cache';
+        return realpath($this->getProjectDir().'/../../../').'/var/'.$this->getEnvironment().'/cache';
     }
 
     public function getLogDir(): string
     {
-        return realpath(__DIR__.'/../../../').'/var/'.$this->getEnvironment().'/logs';
+        return realpath($this->getProjectDir().'/../../../').'/var/'.$this->getEnvironment().'/logs';
     }
 }

@@ -12,6 +12,14 @@
     <env name="BOOTSTRAP_CLEAR_CACHE_ENV" value="test"/>
     <env name="ROLLBAR_TEST_TOKEN" value="ad865e76e7fb496fab096ac07b1dbabb"/>
   </php>
+  <coverage>
+    <include>
+      <directory>./src</directory>
+    </include>
+    <report>
+      <html outputDirectory="var/html-coverage"/>
+    </report>
+  </coverage>
   <testsuites>
     <testsuite name="Project Test Suite">
       <directory>tests</directory>

@@ -1,0 +1,21 @@
+parameters:
+  secret: 5f2efe3d7d15dfab2354cacfaf928a7e72d72d42
+  locale: ~
+
+framework:
+  test: true
+  secret: "%secret%"
+  router:
+    resource: "%kernel.project_dir%/config/routing.yml"
+    strict_requirements: ~
+
+security:
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+  firewalls:
+    test:
+      security: false
+
+services:
+  _defaults:
+    public: true

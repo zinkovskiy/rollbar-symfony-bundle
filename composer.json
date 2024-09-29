@@ -27,6 +27,9 @@
     "symfony/yaml": "^6.4|^7.0"
   },
   "require-dev": {
+    "symfony/framework-bundle": "^6.0|^7.0",
+    "symfony/monolog-bundle": "^3.0",
+    "symfony/security-bundle": "^6.0|^7.0",
     "phpunit/phpunit": "^10.5",
     "friendsofphp/php-cs-fixer": "^3.64",
     "phpstan/phpstan-symfony": "^1.4"
@@ -35,7 +38,7 @@
     "code-quality": [
       "vendor/bin/php-cs-fixer check",
       "vendor/bin/phpstan",
-      "vendor/bin/phpunit"
+      "vendor/bin/phpunit --no-coverage"
     ]
   }
 }
