@@ -71,6 +71,7 @@ final class RollbarSymfonyBundle extends AbstractBundle
                 ->tag('rollbar.person_provider', ['priority' => -1]);
         }
     }
+
     /** @param array<string, mixed> $config */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
