@@ -19,7 +19,7 @@ final class PersonProviderFacadeTest extends TestCase
     protected function setUp(): void
     {
         $this->normalizer = $this->getMockBuilder(NormalizerInterface::class)
-            ->onlyMethods(['supportsNormalization', 'normalize'])
+            ->onlyMethods(['supportsNormalization', 'normalize', 'getSupportedTypes'])
             ->getMock();
     }
 
