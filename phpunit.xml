@@ -9,13 +9,13 @@
     <server name="APP_ENV" value="dev" force="true"/>
     <server name="KERNEL_DIR" value="tests/Fixtures/App"/>
     <server name="KERNEL_CLASS" value="tests\Fixtures\App\AppKernel"/>
-    <env name="BOOTSTRAP_CLEAR_CACHE_ENV" value="test"/>
-    <env name="ROLLBAR_TEST_TOKEN" value="ad865e76e7fb496fab096ac07b1dbabb"/>
   </php>
-  <coverage>
+  <source>
     <include>
       <directory>./src</directory>
     </include>
+  </source>
+  <coverage>
     <report>
       <html outputDirectory="var/html-coverage"/>
     </report>
