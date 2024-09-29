@@ -2,3 +2,15 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
+
+  Ant\RollbarSymfonyBundle\Service\RollbarWrapper: ~
+
+  Ant\RollbarSymfonyBundle\Service\RollbarHandlerFactory:
+    arguments:
+      $config: '%rollbar.config%'
+      $environment: '%kernel.environment%'
+
+  Ant\RollbarSymfonyBundle\Service\Monolog\Handler\RollbarHandler:
+    factory: ['@Ant\RollbarSymfonyBundle\Service\RollbarHandlerFactory', createRollbarHandler]
+    tags:
+      - { name: monolog.logger, channel: rollbar }
