@@ -16,3 +16,4 @@ services:
       - { name: monolog.logger, channel: rollbar }
 
   Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
+  Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
