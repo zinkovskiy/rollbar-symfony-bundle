@@ -9,7 +9,6 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 /**
  * Checks whether to ignore exception or not.
  */
-#[AutoconfigureTag('rollbar.person_provider')]
 interface PersonProviderInterface
 {
     public function getUserInfo(): mixed;

@@ -10,7 +10,6 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 /**
  * Checks whether to ignore the exception or not.
  */
-#[AutoconfigureTag('rollbar.check_ignore_voter')]
 interface CheckIgnoreVoterInterface
 {
     /**

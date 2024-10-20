@@ -80,5 +80,15 @@ final class RollbarSymfonyBundle extends AbstractBundle
     {
         $container->import('../config/services.yaml');
         $container->parameters()->set('rollbar.config', $config);
+
+        // I do not why, but AutoconfigureTag attribute and yaml annotation does not work in symfony 6.4 bundle
+        $builder->registerForAutoconfiguration(PersonProviderInterface::class)
+            ->addTag('rollbar.person_provider');
+
+        $builder->registerForAutoconfiguration(CheckIgnoreVoterInterface::class)
+            ->addTag('rollbar.check_ignore_voter');
+
+        $builder->registerForAutoconfiguration(ExceptionExtraDataProviderInterface::class)
+            ->addTag('rollbar.exception_extra_data_provider');
     }
 }
