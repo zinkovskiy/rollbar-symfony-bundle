@@ -18,3 +18,4 @@ services:
   Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
   Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
   Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade: ~
+  Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProvider: ~
