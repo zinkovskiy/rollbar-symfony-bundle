@@ -13,8 +13,7 @@ final class CheckIgnoreFacade
     public function __construct(
         #[AutowireIterator('rollbar.check_ignore_voter')]
         private readonly iterable $checkIgnoreVoters,
-    ) {
-    }
+    ) {}
 
     public function __invoke(bool $isUncaught, mixed $toLog, Payload $payload): bool
     {
