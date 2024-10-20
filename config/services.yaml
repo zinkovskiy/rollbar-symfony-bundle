@@ -11,6 +11,7 @@ services:
       $environment: '%kernel.environment%'
 
   monolog_rollbar_handler:
+    class: Monolog\Handler\RollbarHandler
     factory: ['@Ant\RollbarSymfonyBundle\Service\RollbarHandlerFactory', createRollbarHandler]
     tags:
       - { name: monolog.logger, channel: rollbar }
