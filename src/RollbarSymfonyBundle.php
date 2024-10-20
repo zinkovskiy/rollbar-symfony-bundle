@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Ant\RollbarSymfonyBundle;
 
+use Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
+use Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
 use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
+use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderInterface;
 use Rollbar\Config;
 use Rollbar\Defaults;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -58,7 +61,7 @@ final class RollbarSymfonyBundle extends AbstractBundle
             'handlers' => [
                 'rollbar' => [
                     'type' => 'service',
-                    'id' => 'Ant\RollbarSymfonyBundle\Service\Monolog\Handler\RollbarHandler',
+                    'id' => 'monolog_rollbar_handler',
                 ],
             ],
         ]);

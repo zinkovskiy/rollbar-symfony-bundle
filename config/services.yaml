@@ -10,7 +10,7 @@ services:
       $config: '%rollbar.config%'
       $environment: '%kernel.environment%'
 
-  Ant\RollbarSymfonyBundle\Service\Monolog\Handler\RollbarHandler:
+  monolog_rollbar_handler:
     factory: ['@Ant\RollbarSymfonyBundle\Service\RollbarHandlerFactory', createRollbarHandler]
     tags:
       - { name: monolog.logger, channel: rollbar }
