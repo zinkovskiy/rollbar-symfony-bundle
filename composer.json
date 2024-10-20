@@ -24,11 +24,11 @@
     "symfony/config": "^6.4|^7.0",
     "symfony/dependency-injection": "^6.4|^7.0",
     "symfony/serializer": "^6.4|^7.0",
-    "symfony/yaml": "^6.4|^7.0"
+    "symfony/yaml": "^6.4|^7.0",
+    "symfony/monolog-bundle": "^3.10"
   },
   "require-dev": {
     "symfony/framework-bundle": "^6.0|^7.0",
-    "symfony/monolog-bundle": "^3.0",
     "symfony/security-bundle": "^6.0|^7.0",
     "phpunit/phpunit": "^10.5",
     "friendsofphp/php-cs-fixer": "^3.64",
