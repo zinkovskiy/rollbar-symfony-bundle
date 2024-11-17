@@ -1,6 +1,9 @@
 {
   "name": "sfertrack/rollbar-symfony-bundle",
   "description": "Symfony bundle to integrate Rollbar tracker",
+  "license": [
+    "MIT"
+  ],
   "type": "symfony-bundle",
   "minimum-stability": "stable",
   "autoload": {
