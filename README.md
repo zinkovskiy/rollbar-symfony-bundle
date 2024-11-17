@@ -6,13 +6,7 @@ Unfortunately, they announced that the bundle will not be actively developed and
 
 > As of May 2024, Rollbar will not be actively updating this repository and plans to archive it in January of 2025. We encourage our community to fork this repo if you wish to continue its development. While Rollbar will no longer be engaging in active development, we remain committed to reviewing and merging pull requests related to security updates. If an actively maintained fork emerges, please reach out to our support team and we will link to it from our documentation.
 
-So, looks like it's time to create new rollbar symfony bundle that will support actual PHP and symfony versions
-
-# Version support
-
-This bundle support symfony version 6.4 | 7.*
-
-It's compatible with php >= 8.1
+So, looks like it's time to create new rollbar symfony bundle that will support actual PHP and symfony versions.
 
 # Set up instructions
 
@@ -21,8 +15,8 @@ It's compatible with php >= 8.1
 ```bash
 composer require sfertrack/rollbar-symfony-bundle
 ```
-3. Create `rollbar_symfony.yaml` configuration file (if you use application structure recommended by symfony , then it should be placed to `config/packages` folder)
-4. Configure your Rollbar setup in `config/packages/rollbar.yaml` or in any of the environment subdirectories:
+3. Create `rollbar_symfony.yaml` configuration file (if you use application structure recommended by symfony, then it should be placed to `config/packages` folder)
+4. Configure your Rollbar setup in `config/packages/rollbar_symfony.yaml` or in any of the environment subdirectories:
 ```yaml
 rollbar_symfony:
    access_token: [rollbar access token]
