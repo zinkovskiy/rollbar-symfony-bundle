@@ -33,7 +33,7 @@ This bundle provides you with several services and patterns that simplify develo
 - [CheckIgnoreVoter](#check-ignore-voter)
 - [ExceptionExtraDataProvider](#exception-extra-data-provider)
 
-### PersonProvider service <a id="person-provider"></a>
+## PersonProvider service <a id="person-provider"></a>
 The service automatically collects information about authenticated users if your application uses [symfony/security-bundle](https://github.com/symfony/security-bundle). No extra configuration is needed.
 
 If you use impersonation feature, the service will also collect information about the impersonator.
@@ -51,7 +51,7 @@ Exceptions thrown by person provider services don't stop the call queue. So, don
 
 **(!) Note: If a person provider service returns an array without an `id` key, Rollbar [won't report](https://github.com/rollbar/rollbar-php/blob/master/src/DataBuilder.php#L933) user data at all**
 
-### CheckIgnoreVoter <a id="check-ignore-voter"></a>
+## CheckIgnoreVoter <a id="check-ignore-voter"></a>
 Sometimes we don't need to see noisy exceptions when a route is not found, a method is not allowed, access is denied, or similar issues occur. For these cases, Rollbar has a `check_ignore` option.
 
 You can define your own service to ignore exceptions with custom rules. To do this, simply implement [CheckIgnoreVoterInterface](src/Service/CheckIgnore/CheckIgnoreVoterInterface.php).
@@ -63,7 +63,7 @@ If this doesn't happen, the exception will be reported to Rollbar.
 For you convenience the bundle includes an example: [CheckIgnoreVoter](src/Service/CheckIgnore/CheckIgnoreVoter.php).
 If you want to use it, you can simply define the class as a service in your configuration files.
 
-### ExceptionExtraDataProvider <a id="exception-extra-data-provider"></a>
+## ExceptionExtraDataProvider <a id="exception-extra-data-provider"></a>
 The bundle provides an interface for exceptions that allows easy passing of additional context to reported exceptions. 
 Typically, developers include this context in exception messages, but this approach becomes inconvenient, especially when the context contains responses from other services.
 
