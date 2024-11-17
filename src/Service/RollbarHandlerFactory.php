@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Service;
+namespace SFErTrack\RollbarSymfonyBundle\Service;
 
-use Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade;
-use Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade;
-use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade;
+use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade;
 use Monolog\Handler\RollbarHandler;
 use Psr\Log\LogLevel;
 use Symfony\Component\HttpKernel\Kernel;

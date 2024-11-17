@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Tests\Service\CheckIgnore;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\CheckIgnore;
 
-use Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoter;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoter;
 use Exception;
 use LogicException;
 use PHPUnit\Framework\TestCase;

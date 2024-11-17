@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Tests;
+namespace SFErTrack\RollbarSymfonyBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

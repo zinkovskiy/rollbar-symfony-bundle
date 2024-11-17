@@ -2,7 +2,7 @@
 
 namespace Tests\Fixtures\App;
 
-use Ant\RollbarSymfonyBundle\RollbarSymfonyBundle;
+use SFErTrack\RollbarSymfonyBundle\RollbarSymfonyBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;

@@ -1,11 +1,11 @@
 {
-  "name": "ant/rollbar-symfony-bundle",
+  "name": "sfertrack/rollbar-symfony-bundle",
   "description": "Symfony bundle to integrate Rollbar tracker",
   "type": "symfony-bundle",
   "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
-      "Ant\\RollbarSymfonyBundle\\": "src/"
+      "SFErTrack\\RollbarSymfonyBundle\\": "src/"
     }
   },
   "autoload-dev": {
@@ -13,7 +13,7 @@
       "tests/Fixtures/App/AppKernel.php"
     ],
     "psr-4": {
-      "Ant\\RollbarSymfonyBundle\\Tests\\": "tests/"
+      "SFErTrack\\RollbarSymfonyBundle\\Tests\\": "tests/"
     }
   },
   "require": {

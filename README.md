@@ -19,7 +19,7 @@ It's compatible with php >= 8.1
 1. To set up the bundle you need to [sign up](https://rollbar.com/signup) rollbar account
 2. Add the bundle with composer:
 ```bash
-composer require ant/rollbar-symfony-bundle
+composer require sfertrack/rollbar-symfony-bundle
 ```
 3. Create `rollbar_symfony.yaml` configuration file (if you use application structure recommended by symfony , then it should be placed to `config/packages` folder)
 4. Configure your Rollbar setup in `config/packages/rollbar.yaml` or in any of the environment subdirectories:

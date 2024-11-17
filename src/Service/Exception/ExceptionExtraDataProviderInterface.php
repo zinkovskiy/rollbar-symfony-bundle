@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Service\Exception;
+namespace SFErTrack\RollbarSymfonyBundle\Service\Exception;
 
 use Throwable;
 

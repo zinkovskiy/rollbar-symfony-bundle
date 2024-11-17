@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Service\PersonProvider;
+namespace SFErTrack\RollbarSymfonyBundle\Service\PersonProvider;
 
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
