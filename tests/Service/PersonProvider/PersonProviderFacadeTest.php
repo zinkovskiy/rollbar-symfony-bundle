@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Tests\Service\PersonProvider;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\PersonProvider;
 
-use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade;
-use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderInterface;
-use Ant\RollbarSymfonyBundle\Tests\Stub\ServiceInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade;
+use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderInterface;
+use SFErTrack\RollbarSymfonyBundle\Tests\Stub\ServiceInterface;
 use Exception;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\User\UserInterface;

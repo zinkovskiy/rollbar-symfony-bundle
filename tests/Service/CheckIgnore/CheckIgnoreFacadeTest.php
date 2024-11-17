@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Tests\Service\CheckIgnore;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\CheckIgnore;
 
-use Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade;
-use Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
 use Exception;
 use PHPUnit\Framework\TestCase;
 use Rollbar\Payload\Payload;

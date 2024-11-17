@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Tests\Service\Exception;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\Exception;
 
-use Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataInterface;
-use Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProvider;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProvider;
 use Exception;
 use PHPUnit\Framework\TestCase;
 use Throwable;

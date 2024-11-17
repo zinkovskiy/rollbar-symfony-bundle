@@ -3,20 +3,20 @@ services:
     autowire: true
     autoconfigure: true
 
-  Ant\RollbarSymfonyBundle\Service\RollbarWrapper: ~
+  SFErTrack\RollbarSymfonyBundle\Service\RollbarWrapper: ~
 
-  Ant\RollbarSymfonyBundle\Service\RollbarHandlerFactory:
+  SFErTrack\RollbarSymfonyBundle\Service\RollbarHandlerFactory:
     arguments:
       $config: '%rollbar.config%'
       $environment: '%kernel.environment%'
 
   monolog_rollbar_handler:
     class: Monolog\Handler\RollbarHandler
-    factory: ['@Ant\RollbarSymfonyBundle\Service\RollbarHandlerFactory', createRollbarHandler]
+    factory: ['@SFErTrack\RollbarSymfonyBundle\Service\RollbarHandlerFactory', createRollbarHandler]
     tags:
       - { name: monolog.logger, channel: rollbar }
 
-  Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
-  Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
-  Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade: ~
-  Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProvider: ~
+  SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
+  SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
+  SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade: ~
+  SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProvider: ~

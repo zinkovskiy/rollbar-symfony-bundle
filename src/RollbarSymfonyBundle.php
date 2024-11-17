@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle;
+namespace SFErTrack\RollbarSymfonyBundle;
 
-use Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
-use Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
-use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
-use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
+use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderInterface;
 use Rollbar\Config;
 use Rollbar\Defaults;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;

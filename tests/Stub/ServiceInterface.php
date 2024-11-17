@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Tests\Stub;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Stub;
 
 interface ServiceInterface {}

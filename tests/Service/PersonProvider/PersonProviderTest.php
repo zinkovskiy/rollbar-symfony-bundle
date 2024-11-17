@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Tests\Service\PersonProvider;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\PersonProvider;
 
-use Ant\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
+use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\SwitchUserToken;

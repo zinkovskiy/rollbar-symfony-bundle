@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Service\PersonProvider;
+namespace SFErTrack\RollbarSymfonyBundle\Service\PersonProvider;
 
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\SwitchUserToken;

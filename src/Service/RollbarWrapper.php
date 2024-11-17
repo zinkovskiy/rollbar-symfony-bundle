@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Service;
+namespace SFErTrack\RollbarSymfonyBundle\Service;
 
 use Rollbar\Payload\Level;
 use Rollbar\Rollbar;

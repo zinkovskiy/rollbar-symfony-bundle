@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Ant\RollbarSymfonyBundle\Tests\Service\Exception;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\Exception;
 
-use Ant\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
-use Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade;
-use Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataInterface;
-use Ant\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
 use Exception;
 use PHPUnit\Framework\TestCase;
 use Throwable;
