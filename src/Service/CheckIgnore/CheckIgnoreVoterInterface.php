@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ant\RollbarSymfonyBundle\Service\CheckIgnore;
 
 use Rollbar\Payload\Payload;
-use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 /**
  * Checks whether to ignore the exception or not.
