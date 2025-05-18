@@ -55,6 +55,12 @@ final class RollbarSymfonyBundle extends AbstractBundle
                     ->end();
             }
         }
+
+        $rollbarConfigNodeChildren->arrayNode('scrub_cookie_fields')
+            ->scalarPrototype()
+            ->end()
+            ->defaultValue([])
+            ->end();
     }
 
     public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
@@ -82,6 +88,7 @@ final class RollbarSymfonyBundle extends AbstractBundle
     {
         $container->import('../config/services.yaml');
         $container->parameters()->set('rollbar.config', $config);
+        $container->parameters()->set('rollbar.config.scrubber_cookie_fields', $config['scrub_cookie_fields'] ?? []);
 
         // I do not why, but AutoconfigureTag attribute and yaml annotation does not work in symfony 6.4 bundle
         $builder->registerForAutoconfiguration(PersonProviderInterface::class)
@@ -97,6 +104,7 @@ final class RollbarSymfonyBundle extends AbstractBundle
             ->addTag('rollbar.scrubber');
 
         $container->services()->set(Scrubber::class)
+            ->arg('$config', $config)
             ->tag('rollbar.scrubber');
     }
 }

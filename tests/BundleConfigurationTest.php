@@ -18,7 +18,7 @@ final class BundleConfigurationTest extends KernelTestCase
 
         $rollbarDefaults = json_decode(
             file_get_contents(
-                self::$kernel->getProjectDir().'/../../rollbarConfigDefaultValues.json'
+                self::$kernel->getProjectDir().'/../../data/rollbarConfigDefaultValues.json'
             ),
             true,
         );

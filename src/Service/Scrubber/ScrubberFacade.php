@@ -20,11 +20,11 @@ final class ScrubberFacade implements ScrubberInterface
      * @param array<string, mixed> $data array to scrub
      * @return array<string, mixed> scrubbed data
      */
-    public function scrub(array &$data, string $replacement): array
+    public function scrub(array &$data, string $replacement = '********'): array
     {
         foreach ($this->scrubbers as $scrubber) {
             try {
-                if (!$scrubber instanceof ScrubberInterface) {
+                if (!$scrubber instanceof \SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface) {
                     continue;
                 }
 

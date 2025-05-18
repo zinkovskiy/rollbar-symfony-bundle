@@ -6,8 +6,8 @@ namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\Scrubber;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
-use Rollbar\ScrubberInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberFacade;
+use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface;
 use SFErTrack\RollbarSymfonyBundle\Tests\Stub\ServiceInterface;
 
 final class ScrubberFacadeTest extends TestCase
