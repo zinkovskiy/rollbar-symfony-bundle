@@ -83,3 +83,8 @@ To resolve this problem, the bundle includes [CookieScrubber](https://github.com
 This scrubber is enabled by default. List of keys to be scrubbed can be configured using the `scrub_cookie_fields` option
 
 You can also easily add your own scrubber: simply create a service that implements [ScrubberInterface](https://github.com/zinkovskiy/rollbar-symfony-bundle/blob/a2b80d6d6f26479466423e9efa784f1e89a6e677/src/Service/Scrubber/ScrubberInterface.php)
+
+## RollbarReporter <a id="rollbar-reporter"></a>
+You might occasionally need to catch an exception, handle it, and log it to Rollbar, especially to track down tricky issues.
+
+[RollbarReporter](https://github.com/zinkovskiy/rollbar-symfony-bundle/blob/05bd9efaaca62c3de1165feb06aa62dd292f1927/src/Service/RollbarReporter.php#L11) can assist you with this.
