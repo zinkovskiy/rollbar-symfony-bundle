@@ -16,6 +16,7 @@ services:
     tags:
       - { name: monolog.logger, channel: rollbar }
 
+  SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade: ~

@@ -58,5 +58,6 @@
   "verbose": "none",
   "verbose_logger": null,
   "raise_on_error": false,
-  "transformer": null
+  "transformer": null,
+  "telemetry": null
 }

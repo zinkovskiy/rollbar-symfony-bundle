@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace SFErTrack\RollbarSymfonyBundle;
 
+use Rollbar\Scrubber;
 use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderInterface;
 use Rollbar\Config;
 use Rollbar\Defaults;
+use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -90,5 +92,11 @@ final class RollbarSymfonyBundle extends AbstractBundle
 
         $builder->registerForAutoconfiguration(ExceptionExtraDataProviderInterface::class)
             ->addTag('rollbar.exception_extra_data_provider');
+
+        $builder->registerForAutoconfiguration(ScrubberInterface::class)
+            ->addTag('rollbar.scrubber');
+
+        $container->services()->set(Scrubber::class)
+            ->tag('rollbar.scrubber');
     }
 }
