@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace SFErTrack\RollbarSymfonyBundle;
 
+use Rollbar\Scrubber;
 use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderInterface;
 use Rollbar\Config;
 use Rollbar\Defaults;
+use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -53,6 +55,12 @@ final class RollbarSymfonyBundle extends AbstractBundle
                     ->end();
             }
         }
+
+        $rollbarConfigNodeChildren->arrayNode('scrub_cookie_fields')
+            ->scalarPrototype()
+            ->end()
+            ->defaultValue([])
+            ->end();
     }
 
     public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
@@ -80,6 +88,7 @@ final class RollbarSymfonyBundle extends AbstractBundle
     {
         $container->import('../config/services.yaml');
         $container->parameters()->set('rollbar.config', $config);
+        $container->parameters()->set('rollbar.config.scrubber_cookie_fields', $config['scrub_cookie_fields'] ?? []);
 
         // I do not why, but AutoconfigureTag attribute and yaml annotation does not work in symfony 6.4 bundle
         $builder->registerForAutoconfiguration(PersonProviderInterface::class)
@@ -90,5 +99,12 @@ final class RollbarSymfonyBundle extends AbstractBundle
 
         $builder->registerForAutoconfiguration(ExceptionExtraDataProviderInterface::class)
             ->addTag('rollbar.exception_extra_data_provider');
+
+        $builder->registerForAutoconfiguration(ScrubberInterface::class)
+            ->addTag('rollbar.scrubber');
+
+        $container->services()->set(Scrubber::class)
+            ->arg('$config', $config)
+            ->tag('rollbar.scrubber');
     }
 }

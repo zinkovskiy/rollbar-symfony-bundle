@@ -9,6 +9,7 @@ use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade;
 use Monolog\Handler\RollbarHandler;
 use Psr\Log\LogLevel;
+use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberFacade;
 use Symfony\Component\HttpKernel\Kernel;
 
 final class RollbarHandlerFactory
@@ -21,12 +22,14 @@ final class RollbarHandlerFactory
         PersonProviderFacade $personProviderFacade,
         CheckIgnoreFacade $checkIgnoreFacade,
         ExceptionExtraDataFacade $exceptionExtraDataFacade,
+        ScrubberFacade $scrubberFacade,
     ) {
         $config['environment'] = $environment;
         $config['framework'] = 'Symfony '.Kernel::VERSION;
         $config['person_fn'] = $personProviderFacade;
         $config['check_ignore'] = $checkIgnoreFacade;
         $config['custom_data_method'] = $exceptionExtraDataFacade;
+        $config['scrubber'] = $scrubberFacade;
 
         $rollbar->init($config);
     }
