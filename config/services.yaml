@@ -4,6 +4,7 @@ services:
     autoconfigure: true
 
   SFErTrack\RollbarSymfonyBundle\Service\RollbarWrapper: ~
+  SFErTrack\RollbarSymfonyBundle\Service\RollbarReporter: ~
 
   SFErTrack\RollbarSymfonyBundle\Service\RollbarHandlerFactory:
     arguments:
