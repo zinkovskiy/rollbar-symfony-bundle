@@ -3,17 +3,18 @@ services:
     autowire: true
     autoconfigure: true
 
-  SFErTrack\RollbarSymfonyBundle\Service\RollbarWrapper: ~
   SFErTrack\RollbarSymfonyBundle\Service\RollbarReporter: ~
 
-  SFErTrack\RollbarSymfonyBundle\Service\RollbarHandlerFactory:
+  SFErTrack\RollbarSymfonyBundle\Service\RollbarLoggerFactory:
     arguments:
       $config: '%rollbar.config%'
-      $environment: '%kernel.environment%'
+      $env: '%kernel.environment%'
 
-  monolog_rollbar_handler:
-    class: Monolog\Handler\RollbarHandler
-    factory: ['@SFErTrack\RollbarSymfonyBundle\Service\RollbarHandlerFactory', createRollbarHandler]
+  Rollbar\RollbarLogger:
+    public: true
+    factory: '@SFErTrack\RollbarSymfonyBundle\Service\RollbarLoggerFactory'
+
+  Monolog\Handler\RollbarHandler:
     tags:
       - { name: monolog.logger, channel: rollbar }
 
