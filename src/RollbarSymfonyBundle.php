@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace SFErTrack\RollbarSymfonyBundle;
 
+use Monolog\Handler\RollbarHandler;
+use Rollbar\Config;
+use Rollbar\Defaults;
+use Rollbar\Rollbar;
+use Rollbar\RollbarLogger;
 use Rollbar\Scrubber;
 use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderInterface;
-use Rollbar\Config;
-use Rollbar\Defaults;
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
@@ -21,6 +24,13 @@ use Throwable;
 
 final class RollbarSymfonyBundle extends AbstractBundle
 {
+    public function boot(): void
+    {
+        /** @var RollbarLogger $rollbarLogger */
+        $rollbarLogger = $this->container->get(RollbarLogger::class);
+        Rollbar::init($rollbarLogger, false, false, false);
+    }
+
     public function configure(DefinitionConfigurator $definition): void
     {
         $configOptions = Config::listOptions();
@@ -69,7 +79,7 @@ final class RollbarSymfonyBundle extends AbstractBundle
             'handlers' => [
                 'rollbar' => [
                     'type' => 'service',
-                    'id' => 'monolog_rollbar_handler',
+                    'id' => RollbarHandler::class,
                 ],
             ],
         ]);

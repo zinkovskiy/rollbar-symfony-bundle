@@ -4,38 +4,34 @@ declare(strict_types=1);
 
 namespace SFErTrack\RollbarSymfonyBundle\Service;
 
+use Rollbar\RollbarLogger;
 use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade;
-use Monolog\Handler\RollbarHandler;
-use Psr\Log\LogLevel;
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberFacade;
 use Symfony\Component\HttpKernel\Kernel;
 
-final class RollbarHandlerFactory
+final class RollbarLoggerFactory
 {
     /** @param array<string, mixed> $config */
     public function __construct(
-        string $environment,
-        array $config,
-        private readonly RollbarWrapper $rollbar,
+        private array $config,
+        string $env,
         PersonProviderFacade $personProviderFacade,
         CheckIgnoreFacade $checkIgnoreFacade,
         ExceptionExtraDataFacade $exceptionExtraDataFacade,
         ScrubberFacade $scrubberFacade,
     ) {
-        $config['environment'] = $environment;
-        $config['framework'] = 'Symfony '.Kernel::VERSION;
-        $config['person_fn'] = $personProviderFacade;
-        $config['check_ignore'] = $checkIgnoreFacade;
-        $config['custom_data_method'] = $exceptionExtraDataFacade;
-        $config['scrubber'] = $scrubberFacade;
-
-        $rollbar->init($config);
+        $this->config['environment'] = $env;
+        $this->config['framework'] = 'Symfony '.Kernel::VERSION;
+        $this->config['person_fn'] = $personProviderFacade;
+        $this->config['check_ignore'] = $checkIgnoreFacade;
+        $this->config['custom_data_method'] = $exceptionExtraDataFacade;
+        $this->config['scrubber'] = $scrubberFacade;
     }
 
-    public function createRollbarHandler(): RollbarHandler
+    public function __invoke(): RollbarLogger
     {
-        return new RollbarHandler($this->rollbar->getLogger(), LogLevel::ERROR);
+        return new RollbarLogger($this->config);
     }
 }
