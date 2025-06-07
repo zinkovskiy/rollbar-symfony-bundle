@@ -4,6 +4,7 @@ services:
     autoconfigure: true
 
   SFErTrack\RollbarSymfonyBundle\Service\RollbarWrapper: ~
+  SFErTrack\RollbarSymfonyBundle\Service\RollbarReporter: ~
 
   SFErTrack\RollbarSymfonyBundle\Service\RollbarHandlerFactory:
     arguments:
@@ -16,6 +17,10 @@ services:
     tags:
       - { name: monolog.logger, channel: rollbar }
 
+  SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberFacade: ~
+  SFErTrack\RollbarSymfonyBundle\Service\Scrubber\CookieScrubber:
+    arguments:
+      $scrubFields: '%rollbar.config.scrubber_cookie_fields%'
   SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade: ~

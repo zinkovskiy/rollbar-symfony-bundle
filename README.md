@@ -32,6 +32,7 @@ This bundle provides you with several services and patterns that simplify develo
 - [PersonProvider](#person-provider)
 - [CheckIgnoreVoter](#check-ignore-voter)
 - [ExceptionExtraDataProvider](#exception-extra-data-provider)
+- [Scrubber](#scrubber)
 
 ## PersonProvider service <a id="person-provider"></a>
 The service automatically collects information about authenticated users if your application uses [symfony/security-bundle](https://github.com/symfony/security-bundle). No extra configuration is needed.
@@ -71,3 +72,19 @@ To address this issue, the bundle includes [ExceptionExtraDataInterface](src/Ser
 This interface defines only one method: `getExtraData`. 
 When a thrown exception implements `ExceptionExtraDataInterface`, `getExtraData` method is called to retrieve the additional data previously passed by the developer. 
 It's assumed that this data is passed through the constructor when the exception is created.
+
+## Scrubber <a id="scrubber"></a>
+By default, Rollbar provides a scrubber that allows you to scrub specific values by key. Take a look on `scrub_fields` option
+
+Sometimes, you need to scrub cookie values, such as user sessions, but still want to see other cookies in the occurrence details.
+
+To resolve this problem, the bundle includes [CookieScrubber](https://github.com/zinkovskiy/rollbar-symfony-bundle/blob/a2b80d6d6f26479466423e9efa784f1e89a6e677/src/Service/Scrubber/CookieScrubber.php)
+
+This scrubber is enabled by default. List of keys to be scrubbed can be configured using the `scrub_cookie_fields` option
+
+You can also easily add your own scrubber: simply create a service that implements [ScrubberInterface](https://github.com/zinkovskiy/rollbar-symfony-bundle/blob/a2b80d6d6f26479466423e9efa784f1e89a6e677/src/Service/Scrubber/ScrubberInterface.php)
+
+## RollbarReporter <a id="rollbar-reporter"></a>
+You might occasionally need to catch an exception, handle it, and log it to Rollbar, especially to track down tricky issues.
+
+[RollbarReporter](https://github.com/zinkovskiy/rollbar-symfony-bundle/blob/05bd9efaaca62c3de1165feb06aa62dd292f1927/src/Service/RollbarReporter.php#L11) can assist you with this.
