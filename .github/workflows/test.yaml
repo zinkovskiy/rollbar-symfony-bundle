@@ -38,4 +38,4 @@ jobs:
         run: SYMFONY_REQUIRE=${{ matrix.symfony }} composer update --prefer-dist --no-progress
 
       - name: Run code quality tools
-        run: composer run-script code-quality
+        run: PHP_CS_FIXER_IGNORE_ENV=1 composer run-script code-quality
