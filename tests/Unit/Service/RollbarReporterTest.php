@@ -36,9 +36,9 @@ class RollbarReporterTest extends TestCase
 
         $this->rollbarLogger->expects($this->once())
             ->method('log')
-            ->with(Level::EMERGENCY, $exceptionMessage, []);
+            ->with(Level::ERROR, $exceptionMessage, []);
 
-        $this->rollbarReporter->reportError($exception, level: Level::EMERGENCY);
+        $this->rollbarReporter->reportError($exception);
     }
 
     /** @test */
@@ -50,9 +50,9 @@ class RollbarReporterTest extends TestCase
 
         $this->rollbarLogger->expects($this->once())
             ->method('log')
-            ->with(Level::EMERGENCY, $exceptionMessage, ['custom_data_method_context' => $extraData]);
+            ->with(Level::ERROR, $exceptionMessage, ['custom_data_method_context' => $extraData]);
 
-        $this->rollbarReporter->reportError($exception, $extraData, level: Level::EMERGENCY);
+        $this->rollbarReporter->reportError($exception, $extraData);
     }
 
     /** @test */
@@ -102,5 +102,44 @@ class RollbarReporterTest extends TestCase
             );
 
         $this->rollbarReporter->reportError($exception, $extraData);
+    }
+
+    public static function reportingLevelsDataProvider(): array
+    {
+        return [
+            [Level::EMERGENCY],
+            [Level::ALERT],
+            [Level::CRITICAL],
+            [Level::ERROR],
+            [Level::WARNING],
+            [Level::NOTICE],
+            [Level::INFO],
+            [Level::DEBUG],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider reportingLevelsDataProvider
+     */
+    public function checkReportingLevel(string $level): void
+    {
+        $exceptionMessage = 'Awesome exception message';
+        $exception = new Exception($exceptionMessage);
+
+        $this->rollbarLogger->expects($this->once())
+            ->method('log')
+            ->with($level, $exceptionMessage, []);
+
+        match ($level) {
+            Level::EMERGENCY => $this->rollbarReporter->reportEmergency($exception),
+            Level::ALERT => $this->rollbarReporter->reportAlert($exception),
+            Level::CRITICAL => $this->rollbarReporter->reportCritical($exception),
+            Level::ERROR => $this->rollbarReporter->reportError($exception),
+            Level::WARNING => $this->rollbarReporter->reportWarning($exception),
+            Level::NOTICE => $this->rollbarReporter->reportNotice($exception),
+            Level::INFO => $this->rollbarReporter->reportInfo($exception),
+            Level::DEBUG => $this->rollbarReporter->reportDebug($exception),
+        };
     }
 }
