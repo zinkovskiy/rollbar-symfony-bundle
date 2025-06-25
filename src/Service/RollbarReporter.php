@@ -13,11 +13,16 @@ final class RollbarReporter
 {
     public function __construct(private readonly LoggerInterface $rollbarLogger) {}
 
-    public function reportError(Throwable $throwable, string $level = Level::ERROR): void
+    /** @param array<string, mixed> $extraData */
+    public function reportError(Throwable $throwable, array $extraData = [], string $level = Level::ERROR): void
     {
         $customDataMethodContext = [];
         if ($throwable instanceof ExceptionExtraDataInterface) {
-            $customDataMethodContext['custom_data_method_context'] = $throwable->getExtraData();
+            $extraData = array_merge($extraData, $throwable->getExtraData());
+        }
+
+        if ($extraData) {
+            $customDataMethodContext['custom_data_method_context'] = $extraData;
         }
 
         $this->rollbarLogger->log(
