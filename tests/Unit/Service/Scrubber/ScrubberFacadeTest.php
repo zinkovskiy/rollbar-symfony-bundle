@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\Scrubber;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service\Scrubber;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberFacade;
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface;
-use SFErTrack\RollbarSymfonyBundle\Tests\Stub\ServiceInterface;
+use SFErTrack\RollbarSymfonyBundle\Tests\Unit\Stub\ServiceInterface;
 
 final class ScrubberFacadeTest extends TestCase
 {

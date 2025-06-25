@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\Scrubber;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service\Scrubber;
 
 use PHPUnit\Framework\TestCase;
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\CookieScrubber;

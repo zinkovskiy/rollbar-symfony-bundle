@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\Exception;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service\Exception;
 
+use Exception;
+use PHPUnit\Framework\TestCase;
 use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
-use Exception;
-use PHPUnit\Framework\TestCase;
 use Throwable;
 
 final class ExceptionExtraDataFacadeTest extends TestCase

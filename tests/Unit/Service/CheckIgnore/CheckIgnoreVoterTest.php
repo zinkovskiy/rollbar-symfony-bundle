@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\CheckIgnore;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service\CheckIgnore;
 
-use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoter;
 use Exception;
 use LogicException;
 use PHPUnit\Framework\TestCase;
 use Rollbar\Payload\Payload;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;

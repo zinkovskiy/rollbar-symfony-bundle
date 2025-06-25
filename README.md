@@ -33,6 +33,8 @@ This bundle provides you with several services and patterns that simplify develo
 - [CheckIgnoreVoter](#check-ignore-voter)
 - [ExceptionExtraDataProvider](#exception-extra-data-provider)
 - [Scrubber](#scrubber)
+- [RollbarReporter](#rollbar-reporter)
+- [UserFriendlyExceptionInterface](#user-friendly-exception-interfacce)
 
 ## PersonProvider service <a id="person-provider"></a>
 The service automatically collects information about authenticated users if your application uses [symfony/security-bundle](https://github.com/symfony/security-bundle). No extra configuration is needed.
@@ -88,3 +90,27 @@ You can also easily add your own scrubber: simply create a service that implemen
 You might occasionally need to catch an exception, handle it, and log it to Rollbar, especially to track down tricky issues.
 
 [RollbarReporter](https://github.com/zinkovskiy/rollbar-symfony-bundle/blob/05bd9efaaca62c3de1165feb06aa62dd292f1927/src/Service/RollbarReporter.php#L11) can assist you with this.
+
+## UserFriendlyExceptionInterface <a id="user-friendly-exception-interfacce"></a>
+Sometimes, exception messages may contain technical information; displaying these messages to users is not good practice.
+
+[UserFriendlyExceptionInterface](src/Service/UserFriendlyExceptionInterface.php) is designed to distinguish exceptions whose messages are user-friendly and can be displayed to the user. 
+Typically, these types of exceptions do not require a fix from developers; instead, users should perform certain actions themselves.
+
+Imagine your developed application depends on an external service. 
+Occasionally, this service might be broken and return a 5xx error. 
+In such a case, you can throw your own exception that implements UserFriendlyExceptionInterface. 
+If you define CheckIgnoreVoter from the package in config, this type of exception will not be logged to Rollbar. 
+Furthermore, you can rely on these exceptions and simply display the exception message to the user.
+
+For example:
+```php
+use SFErTrack\RollbarSymfonyBundle\Service\UserFriendlyExceptionInterface;
+
+final FailedDependencyException extends Exception implements UserFriendlyExceptionInterface {
+    public function __construct()
+    {
+        parent::__construct('Unfortunately zoom service is down, please try again later');
+    }
+}
+```

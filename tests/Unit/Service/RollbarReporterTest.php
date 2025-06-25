@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Service;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service;
 
 use Exception;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Rollbar\Payload\Level;
 use Rollbar\RollbarLogger;
 use SFErTrack\RollbarSymfonyBundle\Service\RollbarReporter;
-use SFErTrack\RollbarSymfonyBundle\Tests\Stub\ExtraDataException;
+use SFErTrack\RollbarSymfonyBundle\Tests\Unit\Stub\ExtraDataException;
 
 class RollbarReporterTest extends TestCase
 {

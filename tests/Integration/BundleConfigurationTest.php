@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Integration;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -18,7 +18,7 @@ final class BundleConfigurationTest extends KernelTestCase
 
         $rollbarDefaults = json_decode(
             file_get_contents(
-                self::$kernel->getProjectDir().'/../../data/rollbarConfigDefaultValues.json'
+                dirname(__FILE__).'/data/rollbarConfigDefaultValues.json'
             ),
             true,
         );

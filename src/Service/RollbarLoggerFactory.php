@@ -17,12 +17,14 @@ final class RollbarLoggerFactory
     public function __construct(
         private array $config,
         string $env,
+        string $projectDir,
         PersonProviderFacade $personProviderFacade,
         CheckIgnoreFacade $checkIgnoreFacade,
         ExceptionExtraDataFacade $exceptionExtraDataFacade,
         ScrubberFacade $scrubberFacade,
     ) {
         $this->config['environment'] = $env;
+        $this->config['root'] = $projectDir;
         $this->config['framework'] = 'Symfony '.Kernel::VERSION;
         $this->config['person_fn'] = $personProviderFacade;
         $this->config['check_ignore'] = $checkIgnoreFacade;

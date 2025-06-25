@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Fixtures\App;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\App;
 
 use SFErTrack\RollbarSymfonyBundle\RollbarSymfonyBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -33,11 +33,11 @@ class AppKernel extends Kernel
 
     public function getCacheDir(): string
     {
-        return realpath($this->getProjectDir().'/../../../').'/var/'.$this->getEnvironment().'/cache';
+        return realpath($this->getProjectDir().'/../../').'/var/'.$this->getEnvironment().'/cache';
     }
 
     public function getLogDir(): string
     {
-        return realpath($this->getProjectDir().'/../../../').'/var/'.$this->getEnvironment().'/logs';
+        return realpath($this->getProjectDir().'/../../').'/var/'.$this->getEnvironment().'/logs';
     }
 }
