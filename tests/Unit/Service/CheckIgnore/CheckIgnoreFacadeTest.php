@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\CheckIgnore;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service\CheckIgnore;
 
-use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade;
-use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
 use Exception;
 use PHPUnit\Framework\TestCase;
 use Rollbar\Payload\Payload;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade;
+use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
 
 final class CheckIgnoreFacadeTest extends TestCase
 {

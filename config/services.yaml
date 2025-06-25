@@ -9,6 +9,7 @@ services:
     arguments:
       $config: '%rollbar.config%'
       $env: '%kernel.environment%'
+      $projectDir: '%kernel.project_dir%'
 
   Rollbar\RollbarLogger:
     public: true

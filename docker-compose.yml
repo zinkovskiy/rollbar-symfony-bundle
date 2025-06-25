@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  rollbar-symfony-bundle:
+    container_name: rollbar-symfony-bundle
+    image: rollbar-symfony-bundle
+    build:
+      context: .
+      args:
+        - PHP_IDE_CONFIG=serverName=rollbar-symfony-bundle
+        - DEV_XDEBUG_AUTOSTART=yes
+        - DEV_HOST_IP=172.24.0.1
+        - DEV_XDEBUG_IDE_KEY=PHPSTORM
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www/app:cached

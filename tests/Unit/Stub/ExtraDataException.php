@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Stub;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Stub;
 
 use Exception;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataInterface;

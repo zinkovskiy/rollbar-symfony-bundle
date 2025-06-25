@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\PersonProvider;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service\PersonProvider;
 
-use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
 use PHPUnit\Framework\TestCase;
+use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\SwitchUserToken;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\Service\Exception;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service\Exception;
 
-use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataInterface;
-use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProvider;
 use Exception;
 use PHPUnit\Framework\TestCase;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProvider;
 use Throwable;
 
 final class ExceptionExtraDataProviderTest extends TestCase

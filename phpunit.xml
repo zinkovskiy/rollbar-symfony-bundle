@@ -7,8 +7,8 @@
   <php>
     <ini name="error_reporting" value="-1"/>
     <server name="APP_ENV" value="dev" force="true"/>
-    <server name="KERNEL_DIR" value="tests/Fixtures/App"/>
-    <server name="KERNEL_CLASS" value="tests\Fixtures\App\AppKernel"/>
+    <server name="KERNEL_DIR" value="tests/App"/>
+    <server name="KERNEL_CLASS" value="SFErTrack\RollbarSymfonyBundle\Tests\App\AppKernel"/>
   </php>
   <source>
     <include>
