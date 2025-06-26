@@ -34,6 +34,7 @@ This bundle provides you with several services and patterns that simplify develo
 - [ExceptionExtraDataProvider](#exception-extra-data-provider)
 - [Scrubber](#scrubber)
 - [RollbarReporter](#rollbar-reporter)
+- [IgnoreExceptionInterface](#ignore-exception-interface)
 - [UserFriendlyExceptionInterface](#user-friendly-exception-interfacce)
 
 ## PersonProvider service <a id="person-provider"></a>
@@ -43,10 +44,10 @@ If you use impersonation feature, the service will also collect information abou
 
 To collect user information, the service uses Symfony serializer. You can easily define which fields you want to report to Rollbar by configuring user entity serialization groups.
 
-If you want to implement your own service to collect user information, simply implement [PersonProviderInterface.php](src/Service/PersonProvider/PersonProviderInterface.php)
+If you want to implement your own service to collect user information, simply implement [PersonProviderInterface](src/Service/PersonProvider/PersonProviderInterface.php)
 
 You can define several person provider services if your application has a complex authentication flow.
-All services that implement [PersonProviderInterface.php](src/Service/PersonProvider/PersonProviderInterface.php) are called in turn, until one of them returns user data.
+All services that implement [PersonProviderInterface](src/Service/PersonProvider/PersonProviderInterface.php) are called in turn, until one of them returns user data.
 
 PersonProvider that comes with this bundle has a priority of `-1` and is called last, in case previous services couldn't provide user data.
 
@@ -91,6 +92,11 @@ You might occasionally need to catch an exception, handle it, and log it to Roll
 
 [RollbarReporter](https://github.com/zinkovskiy/rollbar-symfony-bundle/blob/05bd9efaaca62c3de1165feb06aa62dd292f1927/src/Service/RollbarReporter.php#L11) can assist you with this.
 
+## IgnoreExceptionInterface <a id="ignore-exception-interfacce"></a>
+[IgnoreExceptionInterface](src/Service/IgnoreExceptionInterface.php) is designed to ignore exceptions. 
+The interface is used by [CheckIgnoreVoter](src/Service/CheckIgnore/CheckIgnoreVoter.php).
+Therefore, if you do not want to report some of your exceptions, they just need to implement this interface. 
+
 ## UserFriendlyExceptionInterface <a id="user-friendly-exception-interfacce"></a>
 Sometimes, exception messages may contain technical information; displaying these messages to users is not good practice.
 
@@ -100,8 +106,7 @@ Typically, these types of exceptions do not require a fix from developers; inste
 Imagine your developed application depends on an external service. 
 Occasionally, this service might be broken and return a 5xx error. 
 In such a case, you can throw your own exception that implements UserFriendlyExceptionInterface. 
-If you define CheckIgnoreVoter from the package in config, this type of exception will not be logged to Rollbar. 
-Furthermore, you can rely on these exceptions and simply display the exception message to the user.
+You can rely on this interface and simply display the exception message to the user.
 
 For example:
 ```php

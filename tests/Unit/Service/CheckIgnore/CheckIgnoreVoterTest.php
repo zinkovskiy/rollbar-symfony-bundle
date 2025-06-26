@@ -9,6 +9,7 @@ use LogicException;
 use PHPUnit\Framework\TestCase;
 use Rollbar\Payload\Payload;
 use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoter;
+use SFErTrack\RollbarSymfonyBundle\Tests\Unit\Stub\IgnoredException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -29,6 +30,7 @@ final class CheckIgnoreVoterTest extends TestCase
             [new Exception(), false],
             [new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY), false],
             [new LogicException(), false],
+            [new IgnoredException(), true],
         ];
     }
 
