@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SFErTrack\RollbarSymfonyBundle\Tests\App\Service;
+namespace SFErTrack\RollbarSymfonyBundle\Tests\App\Service\Rollbar;
 
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface;
 

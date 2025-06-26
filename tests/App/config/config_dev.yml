@@ -22,7 +22,11 @@ services:
     autoconfigure: true
     public: true
 
-  SFErTrack\RollbarSymfonyBundle\Tests\App\Service\Scrubber: ~
+  SFErTrack\RollbarSymfonyBundle\Tests\App\Service\:
+    resource: '../Service/*'
+
+  SFErTrack\RollbarSymfonyBundle\Tests\App\Service\Rollbar\Scrubber: ~
+  SFErTrack\RollbarSymfonyBundle\Tests\App\Service\Rollbar\ExtraDataExceptionProviderWrapper: ~
   SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoter: ~
 
   SFErTrack\RollbarSymfonyBundle\Tests\App\Controller\:

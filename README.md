@@ -35,6 +35,7 @@ This bundle provides you with several services and patterns that simplify develo
 - [Scrubber](#scrubber)
 - [RollbarReporter](#rollbar-reporter)
 - [IgnoreExceptionInterface](#ignore-exception-interface)
+- [AbstractExtraDataException](#ignore-exception-interface)
 - [UserFriendlyExceptionInterface](#user-friendly-exception-interfacce)
 
 ## PersonProvider service <a id="person-provider"></a>
@@ -96,6 +97,16 @@ You might occasionally need to catch an exception, handle it, and log it to Roll
 [IgnoreExceptionInterface](src/Service/IgnoreExceptionInterface.php) is designed to ignore exceptions. 
 The interface is used by [CheckIgnoreVoter](src/Service/CheckIgnore/CheckIgnoreVoter.php).
 Therefore, if you do not want to report some of your exceptions, they just need to implement this interface. 
+
+## AbstractExtraDataException <a id="abstract-extra-data-exception">
+Developers sometimes encounter cases where they need to add extra data to already thrown exceptions that implement [ExceptionExtraDataInterface](src/Service/Exception/ExceptionExtraDataInterface.php).
+
+To handle such cases, [AbstractExtraDataException](src/Service/Exception/AbstractExtraDataException.php) was designed. It implements the `ExceptionExtraDataInterface::getExtraData` method and introduces an abstract method, `getExceptionExtraData`, which should provide data passed to the exception's constructor.
+
+The abstract class also has an `addExtraDataItem` method that adds a value to the protected `extraData` field.
+When `getExtraData` method is called, any extra data passed to the exception's constructor will be merged with any additional extra data items added later, and returned as a single array.
+
+Example you can see in test: [PayOrderController](tests/App/Controller/PayOrderController.php)
 
 ## UserFriendlyExceptionInterface <a id="user-friendly-exception-interfacce"></a>
 Sometimes, exception messages may contain technical information; displaying these messages to users is not good practice.
