@@ -125,9 +125,9 @@ For example:
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\UserFriendlyExceptionMessageInterface;
 
 final FailedDependencyException extends Exception implements UserFriendlyExceptionMessageInterface {
-    public function __construct()
+    public function getUserFriendlyMessage()
     {
-        parent::__construct('Unfortunately zoom service is down, please try again later');
+        return 'Unfortunately zoom service is down, please try again later';
     }
 }
 ```
