@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace SFErTrack\RollbarSymfonyBundle\Tests\App\Exception;
 
 use Exception;
-use SFErTrack\RollbarSymfonyBundle\Service\UserFriendlyExceptionInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\UserFriendlyExceptionMessageInterface;
 
-final class TestException extends Exception implements UserFriendlyExceptionInterface
+final class TestExceptionMessage extends Exception implements UserFriendlyExceptionMessageInterface
 {
     public function __construct()
     {
