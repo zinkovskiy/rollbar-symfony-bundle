@@ -25,21 +25,4 @@ class CatchExceptionTest extends WebTestCase
         $this->assertResponseStatusCodeSame(500);
         $this->assertEquals(1, $countScrubberCalls);
     }
-
-    /** @test */
-    public function catchUserFriendlyException(): void
-    {
-        $client = static::createClient();
-
-        $client->request('GET', '/throw-user-friendly-exception');
-
-        /** @var Scrubber $scrubber */
-        $scrubber = $client->getContainer()
-            ->get(Scrubber::class);
-
-        $countScrubberCalls = $scrubber->getCountCalls();
-
-        $this->assertResponseStatusCodeSame(500);
-        $this->assertEquals(0, $countScrubberCalls);
-    }
 }

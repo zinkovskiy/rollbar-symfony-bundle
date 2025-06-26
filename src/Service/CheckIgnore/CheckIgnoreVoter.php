@@ -6,7 +6,6 @@ namespace SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore;
 
 use Rollbar\Payload\Payload;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\IgnoreExceptionInterface;
-use SFErTrack\RollbarSymfonyBundle\Service\UserFriendlyExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
