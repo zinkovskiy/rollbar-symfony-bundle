@@ -120,10 +120,11 @@ In such a case, you can throw your own exception that implements UserFriendlyExc
 You can rely on this interface and simply display the exception message to the user.
 
 For example:
-```php
-use SFErTrack\RollbarSymfonyBundle\Service\UserFriendlyExceptionInterface;
 
-final FailedDependencyException extends Exception implements UserFriendlyExceptionInterface {
+```php
+use SFErTrack\RollbarSymfonyBundle\Service\Exception\UserFriendlyExceptionMessageInterface;
+
+final FailedDependencyException extends Exception implements UserFriendlyExceptionMessageInterface {
     public function __construct()
     {
         parent::__construct('Unfortunately zoom service is down, please try again later');

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SFErTrack\RollbarSymfonyBundle\Tests\App\Controller;
 
 use Exception;
-use SFErTrack\RollbarSymfonyBundle\Tests\App\Exception\TestException;
+use SFErTrack\RollbarSymfonyBundle\Tests\App\Exception\TestExceptionMessage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -21,6 +21,6 @@ final class TestController extends AbstractController
     #[Route('/throw-user-friendly-exception', methods: ['GET'])]
     public function throwUserFriendlyException(): Response
     {
-        throw new TestException();
+        throw new TestExceptionMessage();
     }
 }
