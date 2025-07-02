@@ -64,7 +64,9 @@ final class RollbarReporter
     /** @param array<string, mixed> $extraData */
     public function report(Throwable $throwable, string $level, array $extraData = []): void
     {
-        $customDataMethodContext = [];
+        $customDataMethodContext = [
+            'exception' => $throwable, // We need to pass the exception to the context to have the exception trace for occurrence details.
+        ];
         if ($throwable instanceof ExceptionExtraDataInterface) {
             $extraData = array_merge($extraData, $throwable->getExtraData());
         }
