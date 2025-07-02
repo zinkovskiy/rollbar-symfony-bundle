@@ -36,7 +36,7 @@ class RollbarReporterTest extends TestCase
 
         $this->rollbarLogger->expects($this->once())
             ->method('log')
-            ->with(Level::ERROR, $exceptionMessage, []);
+            ->with(Level::ERROR, $exceptionMessage, ['exception' => $exception]);
 
         $this->rollbarReporter->reportError($exception);
     }
@@ -50,7 +50,11 @@ class RollbarReporterTest extends TestCase
 
         $this->rollbarLogger->expects($this->once())
             ->method('log')
-            ->with(Level::ERROR, $exceptionMessage, ['custom_data_method_context' => $extraData]);
+            ->with(
+                Level::ERROR,
+                $exceptionMessage,
+                ['exception' => $exception, 'custom_data_method_context' => $extraData]
+            );
 
         $this->rollbarReporter->reportError($exception, $extraData);
     }
@@ -63,7 +67,11 @@ class RollbarReporterTest extends TestCase
 
         $this->rollbarLogger->expects($this->once())
             ->method('log')
-            ->with(Level::ERROR, $exceptionMessage, ['custom_data_method_context' => ['key' => 'value']]);
+            ->with(
+                Level::ERROR,
+                $exceptionMessage,
+                ['exception' => $exception, 'custom_data_method_context' => ['key' => 'value']]
+            );
 
         $this->rollbarReporter->reportError($exception);
     }
@@ -80,7 +88,10 @@ class RollbarReporterTest extends TestCase
             ->with(
                 Level::ERROR,
                 $exceptionMessage,
-                ['custom_data_method_context' => ['key' => 'value', 'additional-key' => 'value']]
+                [
+                    'exception' => $exception,
+                    'custom_data_method_context' => ['key' => 'value', 'additional-key' => 'value'],
+                ]
             );
 
         $this->rollbarReporter->reportError($exception, $extraData);
@@ -98,12 +109,16 @@ class RollbarReporterTest extends TestCase
             ->with(
                 Level::ERROR,
                 $exceptionMessage,
-                ['custom_data_method_context' => ['key' => 'value']]
+                [
+                    'exception' => $exception,
+                    'custom_data_method_context' => ['key' => 'value'],
+                ]
             );
 
         $this->rollbarReporter->reportError($exception, $extraData);
     }
 
+    /** @return array<int, array<int, string>> */
     public static function reportingLevelsDataProvider(): array
     {
         return [
@@ -129,8 +144,9 @@ class RollbarReporterTest extends TestCase
 
         $this->rollbarLogger->expects($this->once())
             ->method('log')
-            ->with($level, $exceptionMessage, []);
+            ->with($level, $exceptionMessage, ['exception' => $exception]);
 
+        // @phpstan-ignore-next-line
         match ($level) {
             Level::EMERGENCY => $this->rollbarReporter->reportEmergency($exception),
             Level::ALERT => $this->rollbarReporter->reportAlert($exception),
