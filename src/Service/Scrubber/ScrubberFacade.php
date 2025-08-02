@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace SFErTrack\RollbarSymfonyBundle\Service\Scrubber;
 
-use Rollbar\ScrubberInterface;
+use Rollbar\ScrubberInterface as RollbarScrubberInterface;
+use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface as BundleScrubberInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 use Throwable;
 
-final class ScrubberFacade implements ScrubberInterface
+final class ScrubberFacade implements RollbarScrubberInterface
 {
     /** @param array<int, mixed> $scrubbers each service of the array should implement ScrubberInterface */
     public function __construct(
@@ -24,7 +25,7 @@ final class ScrubberFacade implements ScrubberInterface
     {
         foreach ($this->scrubbers as $scrubber) {
             try {
-                if (!$scrubber instanceof \SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface) {
+                if (!$scrubber instanceof BundleScrubberInterface && !$scrubber instanceof RollbarScrubberInterface) {
                     continue;
                 }
 
