@@ -46,4 +46,29 @@ final class ScrubberFacadeTest extends TestCase
 
         $this->assertEquals($data, $actualResult);
     }
+
+    /** @test */
+    public function scrubberWithCorrectInterfaces(): void
+    {
+        $scrubber1 = $this->getMockBuilder(ScrubberInterface::class)
+            ->onlyMethods(['scrub'])
+            ->getMock();
+
+        $scrubber2 = $this->getMockBuilder(\Rollbar\ScrubberInterface::class)
+            ->onlyMethods(['scrub'])
+            ->getMock();
+
+        $scrubber1->expects($this->once())
+            ->method('scrub');
+
+        $scrubber2->expects($this->once())
+            ->method('scrub');
+
+        $scrubberFacade = new ScrubberFacade([$scrubber1, $scrubber2]);
+
+        $data = ['key' => 'value'];
+        $actualResult = $scrubberFacade->scrub($data, 'xxx');
+
+        $this->assertEquals($data, $actualResult);
+    }
 }
