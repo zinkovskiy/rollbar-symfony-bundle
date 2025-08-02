@@ -9,7 +9,7 @@ use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface as BundleS
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 use Throwable;
 
-final class ScrubberFacade implements ScrubberInterface
+final class ScrubberFacade implements RollbarScrubberInterface
 {
     /** @param array<int, mixed> $scrubbers each service of the array should implement ScrubberInterface */
     public function __construct(
