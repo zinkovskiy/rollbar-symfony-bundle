@@ -60,5 +60,6 @@
   "verbose_logger": null,
   "raise_on_error": false,
   "transformer": null,
-  "telemetry": null
+  "telemetry": null,
+  "scrub_env_variables": true
 }

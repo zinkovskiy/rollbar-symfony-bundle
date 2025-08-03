@@ -67,9 +67,18 @@ final class RollbarSymfonyBundle extends AbstractBundle
         }
 
         $rollbarConfigNodeChildren->arrayNode('scrub_cookie_fields')
+            ->info('List of cookie names which values should be scrubbed')
             ->scalarPrototype()
             ->end()
             ->defaultValue([])
+            ->end();
+
+        $rollbarConfigNodeChildren->booleanNode('scrub_env_variables')
+            ->info('Configuration for scrubbing environment variables')
+            ->treatFalseLike(['enabled' => false])
+            ->treatTrueLike(['enabled' => true])
+            ->treatNullLike(['enabled' => true])
+            ->defaultTrue()
             ->end();
     }
 
