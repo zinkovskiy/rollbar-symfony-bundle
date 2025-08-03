@@ -108,6 +108,9 @@ final class RollbarSymfonyBundle extends AbstractBundle
         $container->import('../config/services.yaml');
         $container->parameters()->set('rollbar.config', $config);
         $container->parameters()->set('rollbar.config.scrubber_cookie_fields', $config['scrub_cookie_fields'] ?? []);
+        $container->parameters()->set('rollbar.config.scrub_fields', $config['scrub_fields'] ?? []);
+        $container->parameters()->set('rollbar.config.scrub_safelist', $config['scrub_safelist'] ?? []);
+        $container->parameters()->set('rollbar.config.scrub_env_variables', $config['scrub_env_variables'] ?? true);
 
         // I do not why, but AutoconfigureTag attribute and yaml annotation does not work in symfony 6.4 bundle
         $builder->registerForAutoconfiguration(PersonProviderInterface::class)
