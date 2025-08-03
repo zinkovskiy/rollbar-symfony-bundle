@@ -1,5 +1,5 @@
 {
-  "environment": "dev",
+  "environment": "prod",
   "body": {
     "trace": {
       "frames": [
@@ -118,7 +118,7 @@
                     "REQUEST_TIME": 1747580094,
                     "argv": [],
                     "argc": 0,
-                    "APP_ENV": "dev",
+                    "APP_ENV": "prod",
                     "APP_SECRET": "***",
                     "SYMFONY_DOTENV_VARS": "APP_ENV,APP_SECRET",
                     "APP_DEBUG": "1"
@@ -262,7 +262,7 @@
                     "REQUEST_TIME": 1747580094,
                     "argv": [],
                     "argc": 0,
-                    "APP_ENV": "dev",
+                    "APP_ENV": "prod",
                     "APP_SECRET": "***",
                     "SYMFONY_DOTENV_VARS": "APP_ENV,APP_SECRET",
                     "APP_DEBUG": "1"
@@ -408,7 +408,7 @@
                     "REQUEST_TIME": 1747580094,
                     "argv": [],
                     "argc": 0,
-                    "APP_ENV": "dev",
+                    "APP_ENV": "prod",
                     "APP_SECRET": "***",
                     "SYMFONY_DOTENV_VARS": "APP_ENV,APP_SECRET",
                     "APP_DEBUG": "1"
@@ -553,7 +553,7 @@
                     "REQUEST_TIME": 1747580094,
                     "argv": [],
                     "argc": 0,
-                    "APP_ENV": "dev",
+                    "APP_ENV": "prod",
                     "APP_SECRET": "***",
                     "SYMFONY_DOTENV_VARS": "APP_ENV,APP_SECRET",
                     "APP_DEBUG": "1"

@@ -37,6 +37,7 @@ This bundle provides you with several services and patterns that simplify develo
 - [IgnoreExceptionInterface](#ignore-exception-interface)
 - [AbstractExtraDataException](#ignore-exception-interface)
 - [UserFriendlyExceptionInterface](#user-friendly-exception-interfacce)
+- [Scrubbing environment variables](#scrubbing-environment-variables)
 
 ## PersonProvider service <a id="person-provider"></a>
 The service automatically collects information about authenticated users if your application uses [symfony/security-bundle](https://github.com/symfony/security-bundle). No extra configuration is needed.
@@ -133,3 +134,19 @@ final FailedDependencyException extends Exception implements UserFriendlyExcepti
     }
 }
 ```
+
+## Scrubbing environment variables <a id="scrubbing-environment-variables"></a>
+Scrubbing production application secrets is a good practice.
+By default, the Rollbar package dumps local environment variables, as the `local_vars_dump` option is enabled by default.
+The Symfony HTTP request object has a [server](https://github.com/symfony/http-foundation/blob/7.3/Request.php#L103) field that contains environment variables.
+These environment variables may contain secret keys, such as a database DSN. You will likely want to keep these values hidden, especially from junior developers.
+
+Here are two possible ways to keep environment variables hidden:
+- Add all environment variable names to the `scrub_fields` option of the Rollbar configuration. 
+In this case, Rollbar will scrub the values of the listed environment variables. 
+However, you should keep in mind, that every time a new sensitive environment variable is added, it must also be added to the `scrub_fields` list.
+- Rely on the `scrub_env_variables` option, provided by the bundle (this option is enabled by default).
+When this option is enabled, all environment variables will be scrubbed. 
+If you do not want to scrub a specific variable, you can add its name to the `scrub_safelist` configuration option. 
+You might also notice that some secrets can be passed to a service as method arguments, these values will also be dumped, and the secret value will be disclosed. 
+The bundle takes care of this as well and scrubs such values.

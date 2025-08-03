@@ -6,6 +6,8 @@ namespace SFErTrack\RollbarSymfonyBundle\Tests\Unit\Service\Scrubber;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
+use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\CookieScrubber;
+use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\DefaultScrubber;
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberFacade;
 use SFErTrack\RollbarSymfonyBundle\Service\Scrubber\ScrubberInterface;
 use SFErTrack\RollbarSymfonyBundle\Tests\Unit\Stub\ServiceInterface;
@@ -50,11 +52,13 @@ final class ScrubberFacadeTest extends TestCase
     /** @test */
     public function scrubberWithCorrectInterfaces(): void
     {
-        $scrubber1 = $this->getMockBuilder(ScrubberInterface::class)
+        $scrubber1 = $this->getMockBuilder(DefaultScrubber::class)
+            ->disableOriginalConstructor()
             ->onlyMethods(['scrub'])
             ->getMock();
 
-        $scrubber2 = $this->getMockBuilder(\Rollbar\ScrubberInterface::class)
+        $scrubber2 = $this->getMockBuilder(CookieScrubber::class)
+            ->disableOriginalConstructor()
             ->onlyMethods(['scrub'])
             ->getMock();
 

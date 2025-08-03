@@ -23,6 +23,15 @@ services:
   SFErTrack\RollbarSymfonyBundle\Service\Scrubber\CookieScrubber:
     arguments:
       $scrubFields: '%rollbar.config.scrubber_cookie_fields%'
+  SFErTrack\RollbarSymfonyBundle\Service\Scrubber\DefaultScrubber:
+    arguments:
+      $scrubFields: '%rollbar.config.scrub_fields%'
+      $safelist: '%rollbar.config.scrub_safelist%'
+      $scrubEnvVariables: '%rollbar.config.scrub_env_variables%'
+  SFErTrack\RollbarSymfonyBundle\Service\Scrubber\LocalVarsSecretsScrubber:
+    arguments:
+      $safelist: '%rollbar.config.scrub_safelist%'
+      $scrubEnvVariables: '%rollbar.config.scrub_env_variables%'
   SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade: ~

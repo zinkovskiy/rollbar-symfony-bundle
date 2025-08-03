@@ -16,7 +16,7 @@ class DefaultScrubber extends Scrubber implements ScrubberInterface
     {
         parent::__construct([
             'scrubFields' => $scrubFields,
-            'scrubSafelist' => $safelist,
+            'scrubSafelist' => array_merge($safelist, ['APP_ENV']),
         ]);
     }
 
@@ -27,8 +27,12 @@ class DefaultScrubber extends Scrubber implements ScrubberInterface
     public function scrub(array &$data, string $replacement = '********', string $path = ''): array
     {
         if ($this->scrubEnvVariables) {
+            $symfonyDotenvVars = isset($_ENV['SYMFONY_DOTENV_VARS']) ? explode(',', $_ENV['SYMFONY_DOTENV_VARS']) : null;
             $this->scrubFields = array_diff(
-                array_merge($this->scrubFields, array_keys(getenv())),
+                array_merge(
+                    $this->scrubFields,
+                    $symfonyDotenvVars ?? array_keys($_ENV)
+                ),
                 $this->safelist
             );
         }
