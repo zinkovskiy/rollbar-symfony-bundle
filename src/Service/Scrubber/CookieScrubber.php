@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SFErTrack\RollbarSymfonyBundle\Service\Scrubber;
 
-final class CookieScrubber implements ScrubberInterface
+class CookieScrubber implements ScrubberInterface
 {
     /** @param array<int, string> $scrubFields list of cookie names which values should be scrubbed */
     public function __construct(private readonly array $scrubFields) {}

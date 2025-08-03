@@ -9,7 +9,6 @@ use Rollbar\Config;
 use Rollbar\Defaults;
 use Rollbar\Rollbar;
 use Rollbar\RollbarLogger;
-use Rollbar\Scrubber;
 use SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreVoterInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProviderInterface;
 use SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProvider;
@@ -124,9 +123,5 @@ final class RollbarSymfonyBundle extends AbstractBundle
 
         $builder->registerForAutoconfiguration(ScrubberInterface::class)
             ->addTag('rollbar.scrubber');
-
-        $container->services()->set(Scrubber::class)
-            ->arg('$config', $config)
-            ->tag('rollbar.scrubber');
     }
 }

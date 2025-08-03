@@ -25,7 +25,7 @@ final class ScrubberFacade implements RollbarScrubberInterface
     {
         foreach ($this->scrubbers as $scrubber) {
             try {
-                if (!$scrubber instanceof BundleScrubberInterface && !$scrubber instanceof RollbarScrubberInterface) {
+                if (!$scrubber instanceof BundleScrubberInterface) {
                     continue;
                 }
 
