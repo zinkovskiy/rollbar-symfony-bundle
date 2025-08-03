@@ -25,8 +25,8 @@ services:
       $scrubFields: '%rollbar.config.scrubber_cookie_fields%'
   SFErTrack\RollbarSymfonyBundle\Service\Scrubber\DefaultScrubber:
     arguments:
-      $scrubFields: '%rollbar.config.scrubber_cookie_fields%'
-      $safelist: '%rollbar.config.scrubber_cookie_fields%'
+      $scrubFields: '%rollbar.config.scrub_fields%'
+      $safelist: '%rollbar.config.scrub_safelist%'
       $scrubEnvVariables: '%rollbar.config.scrub_env_variables%'
   SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
