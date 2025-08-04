@@ -27,5 +27,6 @@ class LocalVarsSecretsScrubberTest extends ScrubEnvTestCase
         $this->assertEquals(15, $actualData['data']['body']['trace']['frames'][0]['lineno']);
         $this->assertStringNotContainsStringIgnoringCase(self::APP_SECRET, $actualDataJson);
         $this->assertStringNotContainsStringIgnoringCase(str_replace('/', '\\/', self::DATABASE_DSN), $actualDataJson);
+        $this->assertStringNotContainsStringIgnoringCase(self::PAYMENT_PROCESSOR_API_KEY, $actualDataJson);
     }
 }

@@ -32,7 +32,7 @@ class LocalVarsSecretsScrubber implements ScrubberInterface
         $secretValues = [];
         foreach ($scrubFields as $scrubField) {
             if ($value = $_ENV[$scrubField] ?? null) {
-                $secretValues[] = $value;
+                $secretValues[] = strtolower((string)$value);
             }
         }
 
