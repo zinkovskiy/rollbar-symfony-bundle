@@ -27,12 +27,7 @@ class LocalVarsSecretsScrubber implements ScrubberInterface
     /** @return array<int, string> List of env variable values that should be scrubbed */
     private function getSecretValues(): array
     {
-        $symfonyDotenvVars = isset($_ENV['SYMFONY_DOTENV_VARS']) ? explode(',', $_ENV['SYMFONY_DOTENV_VARS']) : null;
-        $scrubFields = array_diff(
-            $symfonyDotenvVars ?? array_keys($_ENV),
-            $this->safelist,
-            ['APP_ENV']
-        );
+        $scrubFields = array_diff(array_keys($_ENV), $this->safelist, ['APP_ENV']);
 
         $secretValues = [];
         foreach ($scrubFields as $scrubField) {
