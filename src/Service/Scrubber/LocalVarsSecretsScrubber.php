@@ -16,8 +16,8 @@ class LocalVarsSecretsScrubber implements ScrubberInterface
     {
         if ($this->scrubEnvVariables) {
             $secretValues = $this->getSecretValues();
-            foreach ($data as &$value) {
-                $this->scrubLocalVarsSecrets($value, $replacement, $secretValues);
+            foreach ($data as $key => &$value) {
+                $this->scrubLocalVarsSecrets($value, $replacement, $secretValues, (string)$key);
             }
         }
 
@@ -40,17 +40,18 @@ class LocalVarsSecretsScrubber implements ScrubberInterface
     }
 
     /** @param array<int, string> $secretValues List of env variable values that should be scrubbed */
-    private function scrubLocalVarsSecrets(mixed &$value, string $replacement, array $secretValues): void
+    private function scrubLocalVarsSecrets(mixed &$value, string $replacement, array $secretValues, string $path = ''): void
     {
         if (is_array($value)) {
-            foreach ($value as &$item) {
-                $this->scrubLocalVarsSecrets($item, $replacement, $secretValues);
+            foreach ($value as $key => &$item) {
+                $this->scrubLocalVarsSecrets($item, $replacement, $secretValues, $path.'.'.$key);
             }
 
             return;
         }
 
-        if (in_array(strtolower((string)$value), $secretValues)) {
+        // first check allow us scrub only argument values, not lineno key etc.
+        if (str_contains($path, '.args.') && in_array(strtolower((string)$value), $secretValues)) {
             $value = $replacement;
         }
     }
