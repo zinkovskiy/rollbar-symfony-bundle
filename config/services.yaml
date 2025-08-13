@@ -32,7 +32,16 @@ services:
     arguments:
       $safelist: '%rollbar.config.scrub_safelist%'
       $scrubEnvVariables: '%rollbar.config.scrub_env_variables%'
-  SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\CheckIgnore\CheckIgnoreFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataFacade: ~
   SFErTrack\RollbarSymfonyBundle\Service\Exception\ExceptionExtraDataProvider: ~
+
+  sfertrack.serializer.rollbar_serializer_factory:
+    autoconfigure: false
+    class: 'Symfony\Component\Serializer\Serializer'
+    factory: '@SFErTrack\RollbarSymfonyBundle\Serializer\RollbarSerializerFactory'
+
+  SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade:
+    class: SFErTrack\RollbarSymfonyBundle\Service\PersonProvider\PersonProviderFacade
+    arguments:
+      $normalizer: '@sfertrack.serializer.rollbar_serializer_factory'
