@@ -12,10 +12,12 @@ services:
       $projectDir: '%kernel.project_dir%'
 
   Rollbar\RollbarLogger:
+    lazy: true
     public: true
     factory: '@SFErTrack\RollbarSymfonyBundle\Service\RollbarLoggerFactory'
 
   Monolog\Handler\RollbarHandler:
+    lazy: true
     tags:
       - { name: monolog.logger, channel: rollbar }
 

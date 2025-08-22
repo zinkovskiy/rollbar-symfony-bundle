@@ -13,7 +13,7 @@ final class PersonProvider implements PersonProviderInterface
     public function __construct(private readonly TokenStorageInterface $tokenStorage) {}
 
     /** @return array<string, mixed>|null|UserInterface */
-    public function getUserInfo(): array|null|UserInterface
+    public function getUserInfo(): array|UserInterface|null
     {
         $token = $this->tokenStorage->getToken();
         if (!$token) {
