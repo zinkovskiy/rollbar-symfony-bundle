@@ -28,7 +28,7 @@ class DefaultScrubber extends Scrubber implements ScrubberInterface
     {
         if ($this->scrubEnvVariables) {
             $this->scrubFields = array_diff(
-                array_merge($this->scrubFields, array_keys($_ENV)),
+                array_merge($this->scrubFields, array_keys(getenv())),
                 $this->safelist
             );
         }
