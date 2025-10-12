@@ -27,11 +27,12 @@ class LocalVarsSecretsScrubber implements ScrubberInterface
     /** @return array<int, string> List of env variable values that should be scrubbed */
     private function getSecretValues(): array
     {
-        $scrubFields = array_diff(array_keys($_ENV), $this->safelist, ['APP_ENV']);
+        $env = getenv();
+        $scrubFields = array_diff(array_keys($env), $this->safelist, ['APP_ENV']);
 
         $secretValues = [];
         foreach ($scrubFields as $scrubField) {
-            if ($value = $_ENV[$scrubField] ?? null) {
+            if ($value = $env[$scrubField] ?? null) {
                 $secretValues[] = strtolower((string)$value);
             }
         }
